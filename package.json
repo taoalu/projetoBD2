@@ -1,0 +1,31 @@
+{
+  "name": "projetobd2",
+  "version": "1.0.0",
+  "description": "NodeJs + MongoDB + Heroku + Flutter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taoalu/projetoBD2.git"
+  },
+  "keywords": [
+    "node",
+    "mongo",
+    "heroku",
+    "flutter"
+  ],
+  "author": "Thiago Antonio",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/taoalu/projetoBD2/issues"
+  },
+  "homepage": "https://github.com/taoalu/projetoBD2#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.2",
+    "nodemon": "^2.0.7"
+  }
+}
