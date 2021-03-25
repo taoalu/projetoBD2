@@ -1,4 +1,4 @@
-const mongoose = required('mongoose');
+const mongoose = require('mongoose');
 
 const CafeSchema = new mongoose.Schema({
     name: {
@@ -14,6 +14,11 @@ const CafeSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
+    },
+    imgUrl: {
+        type: String,
+        require: true,
+        default: "https://imgur.com/gallery/B68MhUu",
     }
 });
 
