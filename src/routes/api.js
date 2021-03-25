@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const router = express.Router();
 
@@ -10,17 +11,21 @@ router.post('/salvarCafe', (req, res) => {
     const data = { name: req.body["name"], price: req.body["price"], avaliable: req.body["avaliable"], createdAt: Date.now() };
 
     const newCafe = new Cafe(data);
-
-    newCafe.save((error) => {
-        if (error) {
-            res.status(500).json({ msg: 'Sorry, internal server errors' });
-            return;
-        }
-        // Novo cafe cadastrado
-        return res.json({
-            data
+    if (mongoose.connection.readyState == 1) {        
+        newCafe.save((error) => {
+            if (error) {
+                res.status(500).json({ msg: 'Sorry, internal server errors' });
+                return;
+            }
+            // Novo cafe cadastrado
+            return res.json({
+                data
+            });
         });
-    });
+    } else {
+        res.status(500).json({ msg: 'Não conectado a base de dados!' });
+    }
+
 });
 
 //GET - LISTAR TODOS OS CAFÉS
