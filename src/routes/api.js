@@ -8,10 +8,10 @@ const Cafe = require('../models/Cafe');
 
 //POST - INSERIR UM NOVO CAFÉ
 router.post('/salvarCafe', (req, res) => {
-    const data = { name: req.body["name"], price: req.body["price"], avaliable: req.body["avaliable"], createdAt: Date.now() };
+    const data = { name: req.body.name, price: req.body.price, avaliable: req.body.avaliable, createdAt: Date.now(), imgUrl: req.body.imgUrl };
 
     const newCafe = new Cafe(data);
-    if (mongoose.connection.readyState == 1) {        
+    if (mongoose.connection.readyState == 1) {
         newCafe.save((error) => {
             if (error) {
                 res.status(500).json({ msg: 'Sorry, internal server errors' });
@@ -54,11 +54,6 @@ router.post('/updateById', (req, res) => {
 
 //POST - DELETE BY ID
 router.post('/deletarCafeById', (req, res) => {
-    // Cafe.deleteOne({ _id: req.body.id }, function (err) {
-    //     if (err) return handleError(err);
-    //     res.send("Registro deletado com sucesso!");
-    //   });
-
     Cafe.deleteOne({ _id: req.body.id }, function (err) {
         if (err) {
             res.send("Não foi possível deletar o registro: " + err);
@@ -68,7 +63,5 @@ router.post('/deletarCafeById', (req, res) => {
         return;
     });
 });
-
-//Tank.find({ size: 'small' }).where('createdDate').gt(oneYearAgo).exec(callback);
 
 module.exports = router;
