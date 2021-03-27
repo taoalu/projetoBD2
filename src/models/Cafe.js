@@ -17,8 +17,8 @@ const CafeSchema = new mongoose.Schema({
     },
     imgUrl: {
         type: String,
-        require: true,    
-        default: "https://i.imgur.com/YNgR0YF.png",    
+        require: true,
+        default: "https://i.imgur.com/YNgR0YF.png",
     }
 });
 
